@@ -75,7 +75,7 @@ jobs:
 
     - name: Migrate heroku db
       run: |
-        echo "DATABASE_URL=postgres://${{ DB_USERNAME }}:${{ DB_PASSWORD }}@ec2-184-72-235-80.compute-1.amazonaws.com/dfiu7lp2jib90m" > .env
+        echo "DATABASE_URL=postgres://${{ secrets.DB_USERNAME }}:${{ secrets.DB_PASSWORD }}@ec2-184-72-235-80.compute-1.amazonaws.com/dfiu7lp2jib90m" > .env
         echo "" >> .env
 
         python manage.py migrate
