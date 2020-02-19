@@ -24,4 +24,4 @@ COPY . .
 RUN adduser -D myuser
 USER myuser
 
-web: python manage.py runserver "0.0.0.0:$PORT"
+CMD python manage.py runserver "0.0.0.0:$PORT"
