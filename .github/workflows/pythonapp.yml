@@ -48,6 +48,9 @@ jobs:
         if [[ "$NODE_INDEX" = "0" ]]; then
           python manage.py test
         elif [[ "$NODE_INDEX" = "1" ]]; then
+          python manage.py migrate
+          python manage.py loaddata polls/fixture
+
           python manage.py runserver &
           npx cypress run --spec cypress/integration/simple.js
         fi
