@@ -8,11 +8,11 @@ WORKDIR /app
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
-# install psycopg2
+# install psycopg2-binary
 RUN apk update \
     && apk add --virtual build-deps gcc python3-dev musl-dev \
     && apk add postgresql-dev \
-    && pip install psycopg2 \
+    && pip install psycopg2-binary \
     && apk del build-deps
 
 # install dependencies
