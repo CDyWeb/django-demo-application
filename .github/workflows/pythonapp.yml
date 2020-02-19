@@ -45,6 +45,8 @@ jobs:
       env:
         NODE_INDEX: ${{ matrix.ci_node_index }}
       run: |
+        mkdir cypress/videos
+
         if [[ "$NODE_INDEX" = "0" ]]; then
           python manage.py test
         elif [[ "$NODE_INDEX" = "1" ]]; then
@@ -54,6 +56,12 @@ jobs:
           python manage.py runserver &
           npx cypress run --spec cypress/integration/simple.js
         fi
+
+    - name: Upload cypress videos
+        uses: actions/upload-artifact@v1
+        with:
+          name: cypress
+          path: cypress/videos
 
   deploy-job:
     needs: test-job
