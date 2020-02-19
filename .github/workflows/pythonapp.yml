@@ -58,10 +58,10 @@ jobs:
         fi
 
     - name: Upload cypress videos
-        uses: actions/upload-artifact@v1
-        with:
-          name: cypress
-          path: cypress/videos
+      uses: actions/upload-artifact@v1
+      with:
+        name: cypress
+        path: cypress/videos
 
   deploy-job:
     needs: test-job
